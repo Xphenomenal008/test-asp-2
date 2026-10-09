@@ -3,6 +3,7 @@ WORKDIR /src
 COPY *.csproj ./
 RUN dotnet restore
 COPY . .
+RUN ls -la /app && file /app/Nom_Webhook.dll || true
 RUN dotnet publish -c Release -o /app/publish --no-restore
 
 FROM mcr.microsoft.com/dotnet/aspnet:10.0
